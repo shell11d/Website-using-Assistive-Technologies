@@ -1,0 +1,67 @@
+<html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'posts/css/bootstrap.css' %}" type = "text/css"/><link rel="stylesheet" href="{% static 'posts/css/bootstrap.min.css' %}" type = "text/css"/>
+<link rel="stylesheet" href="{% static 'posts/css/bs.css' %}" type = "text/css"/>
+<title>No Excuse Hunting</title>
+<form action="http://127.0.0.1:8000/posts/home/" method="post" id="list">
+{% csrf_token %}
+<button id="blog" name="blog" class="btn btn-info" style="margin-top:20px;margin-left:30px">BACK</button>
+</form>
+<center><h1>Links</h1>
+<br>
+<!--<button type="button" class="btn btn-warning">Primary</button> -->
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Company</th> 
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Website</th>
+    <th>FB link</th>
+    <th>E-mail ID</th>
+  </tr>
+  <tr>
+    <td>Ty Goodman and Gunner Goodman</td>
+    <td>Goodman's Outfitters</td>
+    <td>Payson, AZ</td>
+    <td></td>
+    <td></td>
+    <td><a href="https://www.facebook.com/Goodman.Outfitters3/">https://www.facebook.com/Goodman.Outfitters3/</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Stephen Ward</td>
+    <td>Ward's Outfitters</td>
+    <td>Wilcox, AZ</td>
+    <td></td>
+    <td><a href="http://wardsoutfitters.com/">wardsoutfitters.com</td>
+    <td></td>
+    <td><a href="trophyhunts@wardsoutfitters.com">trophyhunts@wardsoutfitters.com</td>
+  </tr>
+  <tr>
+    <td>Don Martin</td>
+    <td>Arizona Wildlife Outfitters and Striper Hunters</td>
+    <td>Kingman, AZ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
+
+</body>
+
+</html>

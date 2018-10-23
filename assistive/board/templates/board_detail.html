@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load urlify %}
+
+{% block head_title %}
+{{ object.title }} | {{ block.super }}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class='col-sm-5'>
+{% if user.is_superuser %}
+    <form onsubmit="get_action(this)" id="deletepost" >
+
+<button id="bb" name="cp" class="btn btn-danger" style="height:30px;margin-left:330px">DELETE POST</button><br>
+</form>
+
+</div>
+<div class='col-sm-7'>
+    <form onsubmit="get_actionedit(this)" id="editpost" >
+
+<button id="bb" name="cp" class="btn btn-success" style="height:30px">EDIT POST</button><br>
+</form>
+{% endif %} 
+</div>
+<div class='col-sm-6 col-sm-offset-3'>
+
+<!-- 	<div class="col-sm-6"> -->
+    {% if object.image %}
+    <img src='{{ object.image.url }}' class='img-responsive' />
+    {% endif %}
+<!--     </div>
+ -->   <!--  <div class="col-sm-6">
+ -->
+
+<br>
+<br>
+<h1>{{ object.title }} <small>{% if object.draft %}<span style='color:red;'>Draft</span> {% endif %}{{ object.publish }}</small></h1>
+{% if object.user.get_full_name %}
+<p>Author: {{ object.user.get_full_name }}</p>
+{% endif %}
+
+<script type="text/javascript">  
+
+var url=window.location.href
+var urledit=window.location.href
+var u=url.split('/')
+var urlc=url[url.length-2]
+urledit+="edit/"
+url+="delete"
+// var ans=u[0]+'//'+u[1]+'/'+u[2]+'/'+u[3]+'/'+u[4]+'/'
+
+function get_action(form){
+	form.action=url;
+}
+
+function get_actionedit(form){
+	form.action=urledit;
+}
+
+// document.getElementById('deletepost').action = url;
+</script>
+
+
+<p><div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+<hr/>
+</p>
+
+<div class='row'>
+<div class='col-sm-12'>
+
+{{ object.content|linebreaks }}
+
+<hr/>
+<br/>
+<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+
+
+
+
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+

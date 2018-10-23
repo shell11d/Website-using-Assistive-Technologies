@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load urlify %}
+
+{% block head_title %}
+{{ object.title }} | {{ block.super }}
+{% endblock head_title %}
+
+
+{% block content %}
+
+{% if user.is_superuser %}
+<div class='col-sm-5'>
+    <form onsubmit="get_action(this)" id="deletepost" >
+
+{% csrf_token %}
+<button id="bb" name="cp" class="btn btn-danger" style="height:30px;margin-left:330px">DELETE POST</button><br>
+</form>
+</div>
+<div class='col-sm-7'>
+    <form onsubmit="get_actionedit(this)" id="editpost" >
+
+{% csrf_token %}
+<button id="bb" name="cp" class="btn btn-success" style="height:30px">EDIT POST</button><br>
+</form>
+</div>
+{% endif %} 
+
+<div class='col-sm-6 col-sm-offset-3'>
+    {% if object.image %}
+    <img src='{{ object.image.url }}' class='img-responsive' />
+    {% endif %}
+<h1>{{ object.title }} <small>{% if object.draft %}<span style='color:red;'>Draft</span> {% endif %}{{ object.publish }}</small></h1>
+{% if object.user.get_full_name %}
+<p>Author: {{ object.user.get_full_name }}</p>
+{% endif %}
+
+
+<script>  
+
+var url=window.location.href
+var urlc=url[url.length-2]
+var urledit=url+"edit"
+url+="delete"
+
+
+function get_action(form){
+	form.action=url;
+}
+
+function get_actionedit(form){
+	form.action=urledit;
+}
+
+// document.getElementById('deletepost').action = url;
+</script>
+
+
+<p><div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+<hr/>
+</p>
+
+<div class='row'>
+<div class='col-sm-12'>
+
+{{ object.content|linebreaks }}
+
+<hr/>
+<br/>
+<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+</div>
+
+
+
+
+</div>
+</div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,19 @@
+<html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'posts/css/bootstrap.css' %}" type = "text/css"/><link rel="stylesheet" href="{% static 'posts/css/bootstrap.min.css' %}" type = "text/css"/>
+<link rel="stylesheet" href="{% static 'posts/css/bs.css' %}" type = "text/css"/>
+
+<form action="http://127.0.0.1:8000/posts/home/" method="post" id="list">
+{% csrf_token %}
+<button id="blog" name="blog" class="btn btn-info" style="margin-top:20px;margin-left:30px">BACK</button>
+</form>
+
+<title>No Excuse Hunting</title>
+<center><h1>Donate</h1>
+<br>
+
+
+<h3>To make donations, please visit: gofundme.com<h3>
+
+
+</html>

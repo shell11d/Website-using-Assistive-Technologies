@@ -1,0 +1,22 @@
+<html>
+
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'posts/css/bootstrap.css' %}" type = "text/css"/><link rel="stylesheet" href="{% static 'posts/css/bootstrap.min.css' %}" type = "text/css"/>
+<link rel="stylesheet" href="{% static 'posts/css/bs.css' %}" type = "text/css"/>
+<form action="http://127.0.0.1:8000/posts/home/" method="post" id="list">
+{% csrf_token %}
+<button id="blog" name="blog" class="btn btn-info" style="margin-top:20px;margin-left:30px">BACK</button>
+</form>
+<h1>Contact</h1>
+<form role="form" action="" method="post">
+
+<!-- 	Contact Name: <input type="text" name="contact_name" ><br>
+	Contact Email: <input type="text" name="contact_email" ><br>
+	Content: <textarea rows="4" cols="50" name="content" form="content">Enter text here...</textarea><br> -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+
+</html>

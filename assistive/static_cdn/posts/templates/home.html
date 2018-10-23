@@ -1,0 +1,85 @@
+<html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'posts/css/bootstrap.css' %}" type = "text/css"/><link rel="stylesheet" href="{% static 'posts/css/bootstrap.min.css' %}" type = "text/css"/>
+<link rel="stylesheet" href="{% static 'posts/css/background.css' %}" type = "text/css"/>
+<title>No Excuse Hunting</title>
+<center><h1>No Excuse Hunting</h1>
+<br>
+<!--<button type="button" class="btn btn-warning">Primary</button> -->
+
+
+{% if user.is_superuser %}
+    <!-- <p>Hello, admin.</p> -->
+{% else %}
+    <!-- <p>Hello, ordinary visitor.</p> -->
+{% endif %}
+
+<style>
+.btn-group button{
+    margin:0 auto;
+    display:block;
+    padding: 10px 34px; /* Some padding */
+    cursor: pointer;
+    float: left;
+    top: 20%;
+    margin-top: 330px;
+
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+</style>
+<body>
+
+</style>
+
+<body>
+
+<div class="btn-group">
+
+<form action="http://127.0.0.1:8000/board/blist/" method="post" id="board">
+{% csrf_token %}
+<button id="bb" name="board" class="btn btn-info" style="height:44px; margin-right:10px">BRAGGING BOARD</button><br>
+</form>
+
+<form action="http://127.0.0.1:8000/posts/blogs/" method="post" id="list">
+{% csrf_token %}
+<button id="blog" name="blog" class="btn btn-info" style="margin-right:10px">BLOG</button>
+</form>
+<form action="http://127.0.0.1:8000/posts/link/" method="post" id="link">
+{% csrf_token %}
+<button id="links" name="links" class="btn btn-info" style="margin-right:10px">LINKS</button>
+</form>
+
+<form action="http://127.0.0.1:8000/posts/donate/" method="post" id="donate">
+{% csrf_token %}
+<button id="donate" name="donate" class="btn btn-info" style="margin-right:10px">DONATE</button>
+</form>
+
+<form action="http://127.0.0.1:8000/posts/contact/" method="post" id="donate">
+{% csrf_token %}
+<button id="cu " name="contact_us" class="btn btn-info" style="margin-right:10px">CONTACT US</button>
+</form>
+
+<!-- <form action="http://127.0.0.1:8000/posts/admin/" method="post" id="donate">
+{% csrf_token %}
+<button id="admin" name="admin" class="btn btn-info" style="height:44px; margin-right:10px">ADMIN</button>
+</form> -->
+
+</div>
+
+</body>
+
+</html>
